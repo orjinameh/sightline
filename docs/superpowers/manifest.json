@@ -1,0 +1,639 @@
+{
+  "project": "sightline",
+  "spec": "docs/superpowers/specs/2026-11-23-sightline-sign-family-design.md",
+  "subsystems": [
+    "template",
+    "family",
+    "docs"
+  ],
+  "tasks": [
+    {
+      "id": "template:1",
+      "subsystem": "template",
+      "title": "Scaffold the project",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [],
+      "effort": "low",
+      "model_tier": "fast",
+      "files": {
+        "create": [
+          "package.json",
+          "package-lock.json",
+          "tsconfig.json",
+          "vitest.config.ts",
+          ".gitignore",
+          "tests/smoke.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "package.json scripts",
+        "hyperElements.templates trust list"
+      ],
+      "requires": [],
+      "gate": {
+        "run": "npm install && npm test && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "chore: scaffold the sightline project",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:2",
+      "subsystem": "template",
+      "title": "Generate the font and pictogram assets",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:1"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "scripts/make-assets.ts",
+          "tests/assets.test.ts",
+          "assets/fonts/ibm-plex-sans-latin-400-normal.woff",
+          "assets/fonts/ibm-plex-sans-latin-500-normal.woff",
+          "assets/fonts/ibm-plex-sans-latin-600-normal.woff",
+          "assets/fonts/ibm-plex-sans-latin-700-normal.woff",
+          "assets/fonts/barlow-condensed-latin-500-normal.woff",
+          "assets/fonts/barlow-condensed-latin-600-normal.woff",
+          "assets/fonts/barlow-condensed-latin-700-normal.woff",
+          "assets/fonts/ibm-plex-mono-latin-400-normal.woff",
+          "assets/fonts/ibm-plex-mono-latin-600-normal.woff",
+          "assets/pictograms/car-park.png",
+          "assets/pictograms/toilets.png",
+          "assets/pictograms/reception.png",
+          "assets/pictograms/lift.png",
+          "assets/pictograms/exit.png",
+          "assets/pictograms/light/car-park.png",
+          "assets/pictograms/light/toilets.png",
+          "assets/pictograms/light/reception.png",
+          "assets/pictograms/light/lift.png",
+          "assets/pictograms/light/exit.png"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "assets/fonts/*.woff",
+        "assets/pictograms/*.png"
+      ],
+      "requires": [
+        "package.json scripts"
+      ],
+      "gate": {
+        "run": "npm run assets && npx vitest run tests/assets.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: generate the OFL fonts and the two pictogram colourways",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:3",
+      "subsystem": "template",
+      "title": "Formats and copy-by-distance",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:1"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "src/formats.ts",
+          "src/copy.ts",
+          "tests/copy.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "FORMATS",
+        "FORMAT_LABEL",
+        "MM",
+        "DPI",
+        "FormatName",
+        "CopyForm",
+        "SignValues",
+        "copyFormFor",
+        "copyFor"
+      ],
+      "requires": [],
+      "gate": {
+        "run": "npx vitest run tests/copy.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: derive the sign's copy from its viewing distance",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:4",
+      "subsystem": "template",
+      "title": "Per-format layout geometry",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:3"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "src/layout.ts",
+          "tests/layout.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "FormatLayout",
+        "LAYOUT",
+        "layoutFor"
+      ],
+      "requires": [
+        "FORMATS",
+        "FormatName"
+      ],
+      "gate": {
+        "run": "npx vitest run tests/layout.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: lay out each distance inside a bounded copy column",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:5",
+      "subsystem": "template",
+      "title": "Two buildings, and the legibility assumption",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:1"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "brand.ts",
+          "tests/brand.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "SignBrand",
+        "ArrowStyle",
+        "haldenHouse",
+        "foundryNine",
+        "brands",
+        "legibility"
+      ],
+      "requires": [],
+      "gate": {
+        "run": "npx vitest run tests/brand.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: two buildings from one base theme, and the declared legibility assumption",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:6",
+      "subsystem": "template",
+      "title": "The sign-family Canvas template",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:2",
+        "template:3",
+        "template:4",
+        "template:5"
+      ],
+      "effort": "high",
+      "model_tier": "top",
+      "files": {
+        "create": [
+          "templates/sign-family.tsx",
+          "templates/sign-family-foundry.tsx",
+          "tests/template.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "signFamily",
+        "sightline.SignFamily",
+        "sightline.SignFamilyFoundry"
+      ],
+      "requires": [
+        "assets/fonts/*.woff",
+        "assets/pictograms/*.png",
+        "FORMATS",
+        "FORMAT_LABEL",
+        "FormatName",
+        "copyFor",
+        "layoutFor",
+        "FormatLayout",
+        "SignBrand",
+        "haldenHouse"
+      ],
+      "gate": {
+        "run": "npx hyper-elements check templates/ && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: the sign-family Canvas template, in two buildings",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:7",
+      "subsystem": "template",
+      "title": "The refusal fixtures and the refusal test",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:6"
+      ],
+      "effort": "high",
+      "model_tier": "top",
+      "files": {
+        "create": [
+          "designs/_refusal/car-park.values.json",
+          "designs/_refusal/car-park-short.values.json",
+          "tests/refusal.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "designs/_refusal/car-park.values.json",
+        "designs/_refusal/car-park-short.values.json"
+      ],
+      "requires": [
+        "signFamily",
+        "sightline.SignFamily"
+      ],
+      "gate": {
+        "run": "npx vitest run tests/refusal.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: prove the 30 m refusal demands content instead of deleting it",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:8",
+      "subsystem": "template",
+      "title": "The A3 sign schedule",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:2",
+        "template:3",
+        "template:5"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "templates/sign-sheet.tsx",
+          "designs/_schedule/halden-house.values.json",
+          "tests/sheet.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "signSheet",
+        "sightline.SignSheet"
+      ],
+      "requires": [
+        "assets/fonts/*.woff",
+        "MM",
+        "FORMAT_LABEL",
+        "SignBrand",
+        "haldenHouse"
+      ],
+      "gate": {
+        "run": "npx vitest run tests/sheet.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: the A3 sign schedule, as the fabricator handoff",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "template:9",
+      "subsystem": "template",
+      "title": "Prove the two buildings render differently",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-template.md",
+      "depends_on": [
+        "template:5",
+        "template:6"
+      ],
+      "effort": "low",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "tests/brands-render.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [],
+      "requires": [
+        "signFamily",
+        "sightline.SignFamily",
+        "sightline.SignFamilyFoundry",
+        "haldenHouse",
+        "foundryNine"
+      ],
+      "gate": {
+        "run": "npx vitest run tests/brands-render.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "test: prove one factory renders two visibly different buildings",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "family:10",
+      "subsystem": "family",
+      "title": "The destination directory",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-family.md",
+      "depends_on": [],
+      "effort": "low",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "src/directory.ts",
+          "directory/halden-house.ts",
+          "directory/foundry-nine.ts",
+          "tests/directory.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "PictogramName",
+        "Arrow",
+        "Destination",
+        "Building",
+        "haldenHouseBuilding",
+        "foundryNineBuilding"
+      ],
+      "requires": [],
+      "gate": {
+        "run": "npx vitest run tests/directory.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: the destination directory for two buildings",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "family:11",
+      "subsystem": "family",
+      "title": "Directory to values files",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-family.md",
+      "depends_on": [
+        "template:6",
+        "family:10"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "scripts/build-directory.ts",
+          "tests/build-directory.test.ts",
+          "designs/halden-house/car-park.values.json",
+          "designs/halden-house/toilets.values.json",
+          "designs/halden-house/reception.values.json",
+          "designs/halden-house/lift.values.json",
+          "designs/foundry-nine/car-park.values.json",
+          "designs/foundry-nine/toilets.values.json",
+          "designs/foundry-nine/reception.values.json",
+          "designs/foundry-nine/lift.values.json"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "designs/halden-house/<slug>.values.json",
+        "designs/foundry-nine/<slug>.values.json"
+      ],
+      "requires": [
+        "Building",
+        "haldenHouseBuilding",
+        "foundryNineBuilding"
+      ],
+      "gate": {
+        "run": "npm run build:directory && npx hyper-elements check designs/ && npx vitest run tests/build-directory.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: turn the directory into values files for both buildings",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "family:12",
+      "subsystem": "family",
+      "title": "Render every design",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-family.md",
+      "depends_on": [
+        "family:11"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "scripts/render-all.ts",
+          "tests/render.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "out/designs/**/*.png"
+      ],
+      "requires": [
+        "designs/halden-house/<slug>.values.json",
+        "designs/foundry-nine/<slug>.values.json"
+      ],
+      "gate": {
+        "run": "npm run render:designs && npx vitest run tests/render.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: render every destination at all three distances",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "family:13",
+      "subsystem": "family",
+      "title": "The 3 m / 12 m / 30 m strip",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-family.md",
+      "depends_on": [
+        "family:12"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "scripts/strip.tsx",
+          "tests/strip.test.ts",
+          "docs/images/strip.png"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "docs/images/strip.png"
+      ],
+      "requires": [
+        "out/designs/**/*.png"
+      ],
+      "gate": {
+        "run": "npm run render:designs && npm run strip && npx vitest run tests/strip.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: the 3 m / 12 m / 30 m strip at one scale",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "family:14",
+      "subsystem": "family",
+      "title": "The describe() contract image",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-family.md",
+      "depends_on": [
+        "template:3",
+        "template:6"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "scripts/contract-image.tsx",
+          "tests/contract.test.ts",
+          "docs/contract.json",
+          "docs/images/contract.png"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "docs/contract.json",
+        "docs/images/contract.png"
+      ],
+      "requires": [
+        "signFamily",
+        "sightline.SignFamily",
+        "FORMATS",
+        "MM",
+        "FORMAT_LABEL",
+        "FormatName"
+      ],
+      "gate": {
+        "run": "npm run contract && npx vitest run tests/contract.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: draw the describe() contract as the README's first image",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "family:15",
+      "subsystem": "family",
+      "title": "The one-command demo",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-family.md",
+      "depends_on": [
+        "family:12",
+        "family:13",
+        "family:14"
+      ],
+      "effort": "low",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "tests/demo.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [],
+      "requires": [
+        "out/designs/**/*.png",
+        "docs/images/strip.png",
+        "docs/contract.json",
+        "docs/images/contract.png"
+      ],
+      "gate": {
+        "run": "npx vitest run tests/demo.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "test: prove one command reproduces every image",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "docs:16",
+      "subsystem": "docs",
+      "title": "The README",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-docs.md",
+      "depends_on": [
+        "template:7",
+        "template:9",
+        "family:13",
+        "family:14",
+        "family:15"
+      ],
+      "effort": "medium",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "scripts/check-readme.mjs"
+        ],
+        "modify": [
+          "README.md"
+        ],
+        "test": []
+      },
+      "provides": [
+        "README.md",
+        "scripts/check-readme.mjs"
+      ],
+      "requires": [
+        "designs/_refusal/car-park.values.json",
+        "designs/_refusal/car-park-short.values.json",
+        "docs/images/strip.png",
+        "docs/contract.json",
+        "docs/images/contract.png"
+      ],
+      "gate": {
+        "run": "node scripts/check-readme.mjs",
+        "expect": "PASS"
+      },
+      "commit": "docs: the README, opening with the contract and honest about its limits",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    }
+  ]
+}
