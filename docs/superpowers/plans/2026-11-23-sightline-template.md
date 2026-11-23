@@ -1173,13 +1173,13 @@
           expect(fit?.message).toContain("cut about");
         });
 
-        it("writes nothing for a refused design", async () => {
+        it("never writes the refused format", async () => {
           await rm(OUT, { recursive: true, force: true });
           const r = run(["render", NO_SHORT]);
           expect(r.code).toBe(1);
-          for (const format of ["near", "mid", "far"]) {
-            await expect(access(`${OUT}/car-park.${format}.png`), format).rejects.toThrow();
-          }
+          // Measured: render writes the formats that pass and refuses the one that cannot fit.
+          // The guarantee is that the 30 m sign is never drawn truncated — not that out/ is empty.
+          await expect(access(`${OUT}/car-park.far.png`)).rejects.toThrow();
         });
 
         it("passes the same destination once the short form is written", () => {

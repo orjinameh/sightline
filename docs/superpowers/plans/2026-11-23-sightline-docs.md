@@ -130,7 +130,7 @@
 
       ## What it does
 
-      A building's signs are designed one at a time. A sign that reads well in a 3 m lobby is copied to the end of a 30 m corridor and becomes unreadable, or someone shortens the copy by hand and the family stops agreeing with itself. Sightline makes the family one artifact: a single directory of destinations is the only input, and one Hyper Elements template renders each destination at three viewing distances, choosing **which copy the sign carries** from the distance. When the copy cannot fit, the template refuses with `image/fit`, names the field and says roughly how much to cut — nothing renders, so nothing is silently deleted. Add the short form and the family re-renders, with the 3 m and 12 m signs untouched.
+      A building's signs are designed one at a time. A sign that reads well in a 3 m lobby is copied to the end of a 30 m corridor and becomes unreadable, or someone shortens the copy by hand and the family stops agreeing with itself. Sightline makes the family one artifact: a single directory of destinations is the only input, and one Hyper Elements template renders each destination at three viewing distances, choosing **which copy the sign carries** from the distance. When the copy cannot fit, the template refuses with `image/fit`, names the field and says roughly how much to cut — the refused sign is not drawn, so nothing is silently deleted. Add the short form and the family re-renders, with the 3 m and 12 m signs untouched.
 
       ## Quickstart
 
@@ -156,7 +156,7 @@
       #   fit short: no size fits
 
       npx hyper-elements render designs/_refusal/car-park.values.json
-      # exit 1 — nothing is written
+      # exit 1 — the 30 m PNG is not written (the 3 m and 12 m PNGs are)
 
       npx hyper-elements check designs/_refusal/car-park-short.values.json
       # exit 0
@@ -230,7 +230,7 @@
 
       The copy sits in a bounded column, and that column is the copy budget. A 3:1 sign is wide: at its full width an 82-character long form fits on one line at 120 px and nothing refuses. Bound the column to 3200 px and the same copy needs two lines, which is what `image/fit` measures and reports.
 
-      `image/fit` is the library's measured refusal. It is decided when the image is measured with its fonts, so `check` and `render` decide it — an in-memory `check()` leaves it `not-run`, and a rule that did not run never counts as passed. `render` writes nothing for a design that fails, which is what makes "refuse, never delete" true rather than a slogan.
+      `image/fit` is the library's measured refusal. It is decided when the image is measured with its fonts, so `check` and `render` decide it — an in-memory `check()` leaves it `not-run`, and a rule that did not run never counts as passed. `render` never writes the format that fails, which is what makes "refuse, never delete" true rather than a slogan.
 
       Two buildings come from one factory: `signFamily(brand, id)` is called twice, and each brand is an `extendTheme` of a shared base — Halden House in IBM Plex Sans on ivory and deep green with a circled arrow; Foundry Nine in Barlow Condensed on near-black and signal yellow with a chevron. Different ground, type family, type width, grid and arrow — not a recolour.
 

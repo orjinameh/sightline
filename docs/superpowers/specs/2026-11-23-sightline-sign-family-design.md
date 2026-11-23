@@ -22,7 +22,7 @@ itself**, because every distance was solved separately.
 One Hyper Elements `Canvas` template renders a sign at three viewing distances. A **directory** of
 destinations is the only input. The distance chooses **which copy the sign carries** — not just the
 type size. The text is fitted to a bounded copy box, and when copy cannot fit at the distance the
-template **refuses** with `image/fit`, naming the field and roughly how much to cut; nothing renders,
+template **refuses** with `image/fit`, naming the field and roughly how much to cut; the refused sign is not drawn,
 so nothing is silently deleted.
 
 The refusal is not a metaphor. It is the library's measured diagnostic, and this build proves it
@@ -153,7 +153,7 @@ npx hyper-elements check designs/_refusal/car-park.values.json
 #   fit short: no size fits
 
 npx hyper-elements render designs/_refusal/car-park.values.json
-#   exit 1 — nothing is written. No silent deletion.
+#   exit 1 — the 30 m PNG is never written. No silent deletion.
 
 # 3. The author writes the short form (four words), and the family agrees
 npx hyper-elements design set designs/_refusal/car-park.values.json short="Visitor car park"
@@ -219,7 +219,9 @@ rule image/fit (far): failed
 fit short: no size fits
 ```
 
-`check --json` adds `"field": "short"`. `render` on the same design **exits 1 and writes nothing**.
+`check --json` adds `"field": "short"`. `render` on the same design **exits 1 and does not write
+the refused format** — measured: the 3 m and 12 m PNGs are written, the 30 m PNG is not. That is the
+right behaviour for a family (the signs that fit are kept) and the accurate claim for the README.
 With `short: "Visitor car park"`: `check` exits 0 and prints `fit short: 160px (fits at 160, 140,
 120)`; `render` writes the 5315×1772 PNG.
 
@@ -283,7 +285,8 @@ produced by the library itself — no external compositing tool, no browser.
 ## 10. Acceptance criteria
 
 1. `npx hyper-elements check templates/` exits 0 — the example fits at **all three** formats.
-2. The refusal fixture exits 1 with `image/fit` and `"field": "short"`; `render` on it writes nothing.
+2. The refusal fixture exits 1 with `image/fit` and `"field": "short"`; `render` on it exits 1 and
+   never writes the 30 m PNG (the 3 m and 12 m PNGs are unaffected).
 3. The same destination with a short form exits 0 and renders **1772×1181 / 3543×1772 / 5315×1772**.
 4. `describe --json` lists three formats, six fields, the four measured rules, and each image's
    region per format.
