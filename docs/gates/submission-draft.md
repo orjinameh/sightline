@@ -69,7 +69,9 @@ service, no network at render time (fonts and pictograms are committed bytes).
 
 ## Live preview (optional)
 
-Omitted — this submission ships a template and reproducible renders, not a deployed app.
+TBD-post-build:preview URL — `docs/index.html` is a static page that deploys either to GitHub Pages
+(`https://orjinameh.github.io/sightline/` — Settings → Pages → Source: `main` / `docs`) or to Vercel
+(`npx vercel --prod`, config already in `vercel.json`). Paste whichever is enabled at the closing gate.
 
 ---
 
