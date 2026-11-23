@@ -150,8 +150,8 @@
       ```bash
       npx hyper-elements check designs/_refusal/car-park.values.json
       # exit 1
-      #   error image/fit ... it takes 2 lines at 120px, its smallest size, and fits 1:
-      #     cut about 42 characters (required by sightline.SignFamily)
+      #   error image/fit ... it takes 4 lines at 280px, its smallest size, and fits 1:
+      #     cut about 63 characters (required by sightline.SignFamily)
       #   rule image/fit (far): failed
       #   fit short: no size fits
 
@@ -160,7 +160,7 @@
 
       npx hyper-elements check designs/_refusal/car-park-short.values.json
       # exit 0
-      #   fit short: 160px (fits at 160, 140, 120)
+      #   fit short: 400px (fits at 400, 340, 280)
       ```
 
       The two fixtures are committed as they are so the test suite can assert both outcomes. To make the edit yourself, work on a copy:
@@ -228,11 +228,15 @@
       | `mid` | 12 m | the medium form | 600 × 300 mm |
       | `far` | 30 m | the short form — or the long form, and then it refuses | 900 × 300 mm |
 
-      The copy sits in a bounded column, and that column is the copy budget. A 3:1 sign is wide: at its full width an 82-character long form fits on one line at 120 px and nothing refuses. Bound the column to 3200 px and the same copy needs two lines, which is what `image/fit` measures and reports.
+      The copy sits in a bounded column, and that column is the copy budget. A 3:1 sign is wide: at its full width an 82-character long form fits on one line at 120 px and nothing refuses. Bound the column to 3200 px and the same copy needs four lines at the smallest size, which is what `image/fit` measures and reports.
 
       `image/fit` is the library's measured refusal. It is decided when the image is measured with its fonts, so `check` and `render` decide it — an in-memory `check()` leaves it `not-run`, and a rule that did not run never counts as passed. `render` never writes the format that fails, which is what makes "refuse, never delete" true rather than a slogan.
 
       Two buildings come from one factory: `signFamily(brand, id)` is called twice, and each brand is an `extendTheme` of a shared base — Halden House in IBM Plex Sans on ivory and deep green with a circled arrow; Foundry Nine in Barlow Condensed on near-black and signal yellow with a chevron. Different ground, type family, type width, grid and arrow — not a recolour.
+
+      ![Foundry Nine, the same destination in a second building: near-black ground, white Barlow Condensed, a yellow chevron](docs/images/signs/foundry-nine/car-park.far.png)
+
+      All 24 renders — 8 destinations × 3 distances × 2 buildings — are committed under [`docs/images/signs/`](docs/images/signs).
 
       ### Hyper Elements implementation
 
