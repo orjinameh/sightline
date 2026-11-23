@@ -13,6 +13,9 @@
     ]
   },
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "check": "hyper-elements check templates/ designs/",
@@ -27,6 +30,7 @@
     "@hyper-elements/react": "0.5.2",
     "@react-pdf/renderer": "4.9.0",
     "@resvg/resvg-js": "2.6.2",
+    "next": "16.4.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "satori": "0.33.5"

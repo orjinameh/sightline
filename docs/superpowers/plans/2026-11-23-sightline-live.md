@@ -75,6 +75,9 @@
         { family: "IBM Plex Sans", file: "ibm-plex-sans-latin-500-normal.woff", weight: 500 },
         { family: "IBM Plex Sans", file: "ibm-plex-sans-latin-600-normal.woff", weight: 600 },
         { family: "IBM Plex Sans", file: "ibm-plex-sans-latin-700-normal.woff", weight: 700 },
+        { family: "Barlow Condensed", file: "barlow-condensed-latin-500-normal.woff", weight: 500 },
+        { family: "Barlow Condensed", file: "barlow-condensed-latin-600-normal.woff", weight: 600 },
+        { family: "Barlow Condensed", file: "barlow-condensed-latin-700-normal.woff", weight: 700 },
       ];
 
       const PICTOGRAMS = ["car-park", "toilets", "reception", "lift", "exit"] as const;
@@ -172,7 +175,20 @@
 - [ ] **Step 4: Write `app/layout.tsx`**
 
       ```tsx
+      import localFont from "next/font/local";
       import type { ReactNode } from "react";
+
+      // The same WOFF files the template renders with, self-hosted and fingerprinted by Next.
+      const plex = localFont({
+        src: [
+          { path: "../assets/fonts/ibm-plex-sans-latin-400-normal.woff", weight: "400", style: "normal" },
+          { path: "../assets/fonts/ibm-plex-sans-latin-500-normal.woff", weight: "500", style: "normal" },
+          { path: "../assets/fonts/ibm-plex-sans-latin-600-normal.woff", weight: "600", style: "normal" },
+          { path: "../assets/fonts/ibm-plex-sans-latin-700-normal.woff", weight: "700", style: "normal" },
+        ],
+        display: "swap",
+        fallback: ["-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+      });
 
       export const metadata = {
         title: "Sightline",
@@ -392,6 +408,15 @@
 
       Builds are slow and server starts are flaky, so the probe owns the whole lifecycle: start
       `next start`, poll until it answers, assert both cases, stop it.
+
+      **Three traps it must handle**, each found the hard way while building this task:
+      1. `next start` spawns a `next-server` **grandchild**. Killing the `npx` wrapper leaves it
+         listening, so a later run silently tests stale code — spawn `detached` and kill the process
+         group (`process.kill(-server.pid)`).
+      2. A **fixed port** lets a leftover server answer for you. Use a random port and fail fast on
+         `EADDRINUSE`.
+      3. Assert **exactly one** diagnostic. A missing font family produces extra `image/font`
+         warnings alongside the refusal, which a looser check would wave through.
 
       ```js
       import { spawn } from "node:child_process";
