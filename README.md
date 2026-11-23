@@ -10,7 +10,7 @@ A wayfinding sign family where one directory of destinations renders at 3 m, 12 
 
 ![The same destination at 3 m, 12 m and 30 m, at one scale](docs/images/strip.png)
 
-Live: **https://sightline-six-gamma.vercel.app** — the same page, deployed as a static site.
+Live: **https://sightline-six-gamma.vercel.app** — type a destination, leave the 30 m form empty, and press Render: the deployed function runs this template and returns the refusal, not a screenshot. Fill the short form and three signs come back.
 
 TBD-post-build:demo media — a short GIF of the 30 m refusal followed by the strip
 
@@ -136,6 +136,8 @@ The template is the product, and the v0.5 template surface is what makes it a pr
 - **`describe()`** — the contract an agent fills, drawn as this README's first image from `docs/contract.json`.
 - **Values files** — the designs are data, so nothing runs before the template checks it.
 - **`renderPdf()`** — the A3 sign schedule, as the fabricator handoff.
+- **A live renderer** — `app/api/render` runs the *same* template through `renderImage()` on the
+  server, so the deployed site returns real renders and the real refusal. Nothing is re-implemented.
 
 **These are design proofs, not print files.** Each sign is rendered by Hyper Elements at its own scale so the type size and the copy budget can be checked; send the PDF and the sign schedule to your fabricator for substrate, bleed and colour. Character height follows ADA 2010 Standards Table 703.5.5 within its scope (characters 40–120 in above the floor). Beyond that distance the legibility ratio in `brand.ts` is a declared assumption you should replace with your fabricator's — it is not a standard, and six words is our house limit, not a legal one.
 

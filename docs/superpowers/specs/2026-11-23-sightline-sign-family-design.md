@@ -53,7 +53,10 @@ end-to-end before writing a line of product code (§7).
 - **No sign-shop calculator.** No distance→point-size computation. `legibility.ratio` is
   documentation; the template never derives a size from it.
 - **No silent deletion.** Refuse; never truncate.
-- **No live data, deployment, chain or paid asset.** Committed directory, OFL fonts, local pictograms.
+- **No live data, chain or paid asset.** Committed directory, OFL fonts, local pictograms.
+  *(Added after the build at the owner's request: a static gallery page, and a live renderer —
+  `app/api/render` on Vercel — that runs the same template server-side. Task 18. Still no live
+  data: the form's values are the request body and nothing is persisted.)*
 - **No `require.lint`** — lint does not run on a Canvas (`template/rule-unavailable`).
 - **No four-artifact kit** (email + page + PDF + social card).
 - **No README event-overlay headings** — see §6.4.

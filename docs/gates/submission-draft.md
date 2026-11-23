@@ -71,9 +71,14 @@ service, no network at render time (fonts and pictograms are committed bytes).
 
 https://sightline-six-gamma.vercel.app
 
-A static page (`docs/index.html`) deployed to Vercel from the repo root; `vercel.json` sets
-`outputDirectory: "docs"`, so there is no build step. Verified public: the bare URL returns `200` with
-no cookies, and every image it references returns `200`.
+A live renderer, not a gallery. The page posts the form to `app/api/render`, a Vercel Node function that
+runs the *same* `templates/sign-family.tsx` the CLI runs, through `renderImage()` per format. Leave the
+30 m form empty and the API returns `422` with the library's own `image/fit` diagnostic (field `short`,
+"cut about 63 characters") and withholds the 30 m image; fill it in and it returns three PNGs.
+
+Verified against the deployed URL: `422` with exactly one diagnostic, and `200` with three
+`data:image/png` payloads. `satori` and `@resvg/resvg-js` are `serverExternalPackages`, and
+`outputFileTracingIncludes` traces `assets/**` into the function.
 
 ---
 
