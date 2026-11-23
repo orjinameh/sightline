@@ -12,8 +12,6 @@ A wayfinding sign family where one directory of destinations renders at 3 m, 12 
 
 Live: **https://sightline-six-gamma.vercel.app** — type a destination, leave the 30 m form empty, and press Render: the deployed function runs this template and returns the refusal, not a screenshot. Fill the short form and three signs come back.
 
-TBD-post-build:demo media — a short GIF of the 30 m refusal followed by the strip
-
 ## What it does
 
 A building's signs are designed one at a time. A sign that reads well in a 3 m lobby is copied to the end of a 30 m corridor and becomes unreadable, or someone shortens the copy by hand and the family stops agreeing with itself. Sightline makes the family one artifact: a single directory of destinations is the only input, and one Hyper Elements template renders each destination at three viewing distances, choosing **which copy the sign carries** from the distance. When the copy cannot fit, the template refuses with `image/fit`, names the field and says roughly how much to cut — the refused sign is not drawn, so nothing is silently deleted. Add the short form and the family re-renders, with the 3 m and 12 m signs untouched.

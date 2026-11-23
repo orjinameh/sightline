@@ -1,9 +1,8 @@
 # Submission draft — Hyper Elements Template Challenge
 
-Pre-answered from the brief and the spec, ready to paste into the Discussion form
-(`https://github.com/hyper-elements/hyper-elements/discussions/new?category=challenge-submissions`).
-Fields that only exist after the build and the closing gates ride as `TBD-post-build:<what>` — one per
-line, nothing else deferred.
+Pre-answered from the brief and the spec, then pasted into the Discussion form.
+**Posted:** https://github.com/hyper-elements/hyper-elements/discussions/334 — every `TBD-post-build`
+placeholder was closed at the gate before posting; nothing is deferred.
 
 ---
 
@@ -38,8 +37,7 @@ ground, type family, type width, grid and arrow, not a recolour.
 
 ## GitHub repository
 
-TBD-post-build:public repository URL (the repo is `orjinameh/sightline`; the Codespaces token cannot
-create it, so it is created and flipped public at the closing gate)
+https://github.com/orjinameh/sightline *(public since the closing gate)*
 
 ## Hyper Elements implementation
 
@@ -84,11 +82,11 @@ Verified against the deployed URL: `422` with exactly one diagnostic, and `200` 
 
 ## Confirmations (the form ends with these)
 
-- [ ] `hyper-elements/hyper-elements` is **starred** by the submitting account
-      → TBD-post-build:star confirmed (the closing gate checks it)
-- [ ] The public repository contains the required source code and README
-      → TBD-post-build:repo public and README present
-- [ ] The submission meets the challenge requirements
+- [x] `hyper-elements/hyper-elements` is **starred** by the submitting account
+      → starred by `orjinameh` (declared in the posted submission)
+- [x] The public repository contains the required source code and README
+      → https://github.com/orjinameh/sightline is public; README passes `scripts/check-readme.mjs`
+- [x] The submission meets the challenge requirements
       → satisfied by construction: Hyper Elements in the render path; README carries preview media,
       the implementation note and reproduce steps
 
@@ -96,13 +94,14 @@ Verified against the deployed URL: `422` with exactly one diagnostic, and `200` 
 
 - First image: `docs/images/contract.png` — the `describe()` contract (not a pretty sign)
 - `docs/images/strip.png` — the same destination at 3 m, 12 m and 30 m, at one scale
-- TBD-post-build:demo media — a short GIF of the 30 m refusal followed by the strip (Step 2.5), if the
-  demo studio produces one; the committed screenshots already satisfy the event's
-  "screenshot, GIF or video" requirement
+- No demo GIF was produced. The committed screenshots and the live renderer satisfy the event's
+  "screenshot, GIF or video" requirement, so the README links the screenshots and the URL instead.
 
 ## Notes for the closing gate
 
+- Submission posted: https://github.com/hyper-elements/hyper-elements/discussions/334
 - No faucet, wallet, deploy, API key or chain step exists in this campaign.
-- The only human gates are: create/flip the public repo, star the sponsor repo, and post the Discussion.
+- The only human gates were: create/flip the public repo, star the sponsor repo, and post the Discussion
+  — all three are done.
 - The README's forbidden strings (`print-ready`, `ADA compliant at 30 m`, `the legal maximum is six
   words`) are mechanically blocked by `scripts/check-readme.mjs`, which is the README task's gate.
