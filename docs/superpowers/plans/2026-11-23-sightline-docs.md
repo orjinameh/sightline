@@ -7,7 +7,7 @@
 
 ---
 
-### Task 16: The README16
+### Task 16: The README
 
 **Files:**
 - Modify: `README.md`

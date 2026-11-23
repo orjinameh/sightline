@@ -22,7 +22,7 @@
 
 ---
 
-### Task 1: Scaffold the project1
+### Task 1: Scaffold the project
 
 **Files:**
 - Create: `package.json`
@@ -149,7 +149,7 @@
 
 ---
 
-### Task 2: Generate the font and pictogram assets2
+### Task 2: Generate the font and pictogram assets
 
 **Files:**
 - Create: `scripts/make-assets.ts`
@@ -312,7 +312,7 @@
 
 ---
 
-### Task 3: Formats and copy-by-distance3
+### Task 3: Formats and copy-by-distance
 
 **Files:**
 - Create: `src/formats.ts`
@@ -472,7 +472,7 @@
 
 ---
 
-### Task 4: Per-format layout geometry4
+### Task 4: Per-format layout geometry
 
 **Files:**
 - Create: `src/layout.ts`
@@ -622,7 +622,7 @@
 
 ---
 
-### Task 5: Two buildings, and the legibility assumption5
+### Task 5: Two buildings, and the legibility assumption
 
 **Files:**
 - Create: `brand.ts`
@@ -776,7 +776,7 @@
 
 ---
 
-### Task 6: The sign-family Canvas template6
+### Task 6: The sign-family Canvas template
 
 **Files:**
 - Create: `templates/sign-family.tsx`
@@ -1095,7 +1095,7 @@
 
 ---
 
-### Task 7: The refusal fixtures and the refusal test7
+### Task 7: The refusal fixtures and the refusal test
 
 **Files:**
 - Create: `designs/_refusal/car-park.values.json`
@@ -1234,7 +1234,7 @@
 
 ---
 
-### Task 8: The A3 sign schedule8
+### Task 8: The A3 sign schedule
 
 **Files:**
 - Create: `templates/sign-sheet.tsx`
@@ -1436,7 +1436,7 @@
 
 ---
 
-### Task 9: Prove the two buildings render differently9
+### Task 9: Prove the two buildings render differently
 
 **Files:**
 - Create: `tests/brands-render.test.ts`

@@ -9,7 +9,7 @@
 
 ---
 
-### Task 10: The destination directory10
+### Task 10: The destination directory
 
 **Files:**
 - Create: `src/directory.ts`
@@ -219,7 +219,7 @@
 
 ---
 
-### Task 11: Directory to values files11
+### Task 11: Directory to values files
 
 **Files:**
 - Create: `scripts/build-directory.ts`
@@ -339,7 +339,7 @@
 
 ---
 
-### Task 12: Render every design12
+### Task 12: Render every design
 
 **Files:**
 - Create: `scripts/render-all.ts`
@@ -412,7 +412,7 @@
 
 ---
 
-### Task 13: The 3 m / 12 m / 30 m strip13
+### Task 13: The 3 m / 12 m / 30 m strip
 
 **Files:**
 - Create: `scripts/strip.tsx`
@@ -550,7 +550,7 @@
 
 ---
 
-### Task 14: The `describe()` contract image14
+### Task 14: The `describe()` contract image
 
 **Files:**
 - Create: `scripts/contract-image.tsx`
@@ -785,7 +785,7 @@
 
 ---
 
-### Task 15: The one-command demo15
+### Task 15: The one-command demo
 
 **Files:**
 - Create: `tests/demo.test.ts`
