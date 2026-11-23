@@ -636,6 +636,44 @@
       "human_gate": false,
       "allow_empty": false,
       "status": "pending"
+    },
+    {
+      "id": "docs:17",
+      "subsystem": "docs",
+      "title": "The preview page",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-docs.md",
+      "depends_on": [
+        "family:13",
+        "family:14"
+      ],
+      "effort": "low",
+      "model_tier": "standard",
+      "files": {
+        "create": [
+          "docs/index.html",
+          "vercel.json",
+          "tests/pages.test.ts"
+        ],
+        "modify": [],
+        "test": []
+      },
+      "provides": [
+        "docs/index.html",
+        "vercel.json"
+      ],
+      "requires": [
+        "docs/images/strip.png",
+        "docs/contract.json",
+        "docs/images/contract.png"
+      ],
+      "gate": {
+        "run": "npx vitest run tests/pages.test.ts && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: a static preview page that deploys to Pages or Vercel",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
     }
   ]
 }

@@ -277,3 +277,193 @@
 
 - [ ] **Step 5: Commit (kernel-performed — no agent runs this)**
       Message: `docs: the README, opening with the contract and honest about its limits`
+
+---
+
+### Task 17: The preview page
+
+**Files:**
+- Create: `docs/index.html`
+- Create: `vercel.json`
+- Create: `tests/pages.test.ts`
+
+**Depends on:** Task 13, Task 14
+**Effort:** low
+**Model tier:** standard
+**Provides:** `docs/index.html`, `vercel.json`
+**Requires:** `docs/images/strip.png`, `docs/contract.json`, `docs/images/contract.png`
+
+- [ ] **Step 1: Write the failing test `tests/pages.test.ts`**
+
+      ```ts
+      import { readFile } from "node:fs/promises";
+      import { describe, expect, it } from "vitest";
+
+      const FORBIDDEN = ["print-ready", "ADA compliant at 30 m", "the legal maximum is six words"];
+
+      describe("the preview page", () => {
+        it("opens with the contract, and every path is relative to docs/", async () => {
+          const html = await readFile("docs/index.html", "utf8");
+          expect(html).toContain("<title>Sightline</title>");
+
+          const imgs = [...html.matchAll(/<img[^>]+src="([^"]+)"/g)].map((m) => m[1]);
+          expect(imgs[0]).toBe("images/contract.png");
+          expect(imgs).toContain("images/strip.png");
+          expect(imgs.some((src) => src.includes("signs/foundry-nine"))).toBe(true);
+
+          for (const phrase of FORBIDDEN) {
+            expect(html.toLowerCase(), phrase).not.toContain(phrase.toLowerCase());
+          }
+        });
+
+        it("can be deployed to Vercel as a static site", async () => {
+          const cfg = JSON.parse(await readFile("vercel.json", "utf8")) as {
+            outputDirectory?: string;
+          };
+          expect(cfg.outputDirectory).toBe("docs");
+        });
+      });
+      ```
+
+- [ ] **Step 2: Run to confirm it fails**
+
+      Run: `npx vitest run tests/pages.test.ts`
+      Expected: FAIL — `ENOENT: no such file or directory, open 'docs/index.html'`
+
+- [ ] **Step 3: Write `docs/index.html`**
+
+      Static, no JavaScript, no build step. Image paths are relative to `docs/` because that folder is
+      the site root on GitHub Pages *and* the Vercel output directory.
+
+      ```html
+      <!doctype html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <title>Sightline</title>
+          <style>
+            :root { --ink: #14201c; --muted: #6b6a5f; --rule: #dad3c2; --ground: #f4f1ea; --green: #1f4d3f; }
+            * { box-sizing: border-box; }
+            body { margin: 0; background: var(--ground); color: var(--ink);
+                   font: 16px/1.6 "IBM Plex Sans", -apple-system, Segoe UI, Roboto, sans-serif; }
+            main { max-width: 1100px; margin: 0 auto; padding: 48px 24px 96px; }
+            h1 { font-size: 44px; line-height: 1.05; margin: 0 0 8px; letter-spacing: -0.02em; }
+            h2 { font-size: 22px; margin: 56px 0 12px; }
+            p.lede { font-size: 19px; color: var(--muted); margin: 0 0 8px; max-width: 62ch; }
+            code, pre { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+            pre { background: #fff; border: 1px solid var(--rule); border-radius: 10px;
+                  padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.55; }
+            img { width: 100%; height: auto; display: block; border: 1px solid var(--rule);
+                  border-radius: 10px; background: #fff; }
+            figure { margin: 0; }
+            figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+            .grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+            @media (min-width: 720px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+            .pill { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 13px;
+                    background: var(--green); color: #fff; border-radius: 999px; padding: 4px 12px; margin-right: 8px; }
+            footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule);
+                     font-size: 14px; color: var(--muted); }
+            a { color: var(--green); }
+          </style>
+        </head>
+        <body>
+          <main>
+            <h1>Sightline</h1>
+            <p class="lede">
+              A wayfinding sign family where one directory of destinations renders at 3 m, 12 m and 30 m
+              — and the distance changes the copy, not just the type size.
+            </p>
+            <p class="lede">
+              When the copy cannot fit at a distance, the template refuses with <code>image/fit</code>
+              instead of silently shrinking or truncating it.
+            </p>
+
+            <h2>The contract an agent fills</h2>
+            <figure>
+              <img src="images/contract.png" alt="The describe() output for sightline.SignFamily: three formats, six fields, four measured rules" />
+              <figcaption>
+                Drawn from <a href="contract.json">contract.json</a> — the output of
+                <code>npx hyper-elements describe templates/sign-family.tsx --json</code>.
+              </figcaption>
+            </figure>
+
+            <h2>One destination, three distances</h2>
+            <figure>
+              <img src="images/strip.png" alt="The same destination at 3 m, 12 m and 30 m, at one scale" />
+              <figcaption>The long form at 3 m, the medium form at 12 m, the short form at 30 m — one directory, one value set.</figcaption>
+            </figure>
+
+            <h2>The refusal that demands content</h2>
+            <p class="lede">
+              This is a 30 m sign with no short form. The template refuses, names the field and says
+              roughly how much to cut. Nothing is drawn truncated.
+            </p>
+            <pre>$ npx hyper-elements check designs/_refusal/car-park.values.json
+      error image/fit ... it takes 4 lines at 280px, its smallest size, and fits 1:
+        cut about 63 characters (required by sightline.SignFamily)
+      rule image/fit (far): failed
+      fit short: no size fits
+      # exit 1</pre>
+            <p class="lede">
+              Write the four-word short form and the same destination renders: <code>fit short: 400px
+              (fits at 400, 340, 280)</code>, exit 0.
+            </p>
+
+            <h2>Two buildings from one template</h2>
+            <div class="grid two">
+              <figure>
+                <img src="images/signs/halden-house/car-park.far.png" alt="Halden House: ivory ground, IBM Plex Sans, deep green circled arrow" />
+                <figcaption>Halden House — editorial: ivory, IBM Plex Sans, circled arrow.</figcaption>
+              </figure>
+              <figure>
+                <img src="images/signs/foundry-nine/car-park.far.png" alt="Foundry Nine: near-black ground, white Barlow Condensed, yellow chevron" />
+                <figcaption>Foundry Nine — industrial: near-black, Barlow Condensed, yellow chevron.</figcaption>
+              </figure>
+            </div>
+
+            <h2>The rules that run</h2>
+            <p>
+              <span class="pill">canvas/overflow</span>
+              <span class="pill">image/overflow</span>
+              <span class="pill">image/glyph</span>
+              <span class="pill">image/fit</span>
+            </p>
+            <p class="lede">
+              All four are required on every design, and each reports passed, failed or not-run. A rule
+              that did not run never counts as passed.
+            </p>
+
+            <footer>
+              These are design proofs, not print files. The legibility ratio in <code>brand.ts</code> is a
+              declared assumption, and six words is a house limit, not a legal one.
+              Source: <a href="https://github.com/orjinameh/sightline">github.com/orjinameh/sightline</a>.
+            </footer>
+          </main>
+        </body>
+      </html>
+      ```
+
+- [ ] **Step 4: Write `vercel.json`**
+
+      One config so the same folder deploys to Vercel as a static site, with no build step:
+
+      ```json
+      {
+        "$schema": "https://openapi.vercel.sh/vercel.json",
+        "outputDirectory": "docs",
+        "cleanUrls": true
+      }
+      ```
+
+- [ ] **Step 5: Run the gate**
+
+      Run: `npx vitest run tests/pages.test.ts && echo GATE-PASS`
+      Expected: `GATE-PASS`
+
+      If it reports the first image, `docs/index.html` must open with `images/contract.png` (relative to
+      `docs/`, because that folder is the site root). If it reports a forbidden string, the page copied
+      wording from a draft instead of the README's approved sentence.
+
+- [ ] **Step 6: Commit (kernel-performed — no agent runs this)**
+      Message: `feat: a static preview page that deploys to Pages or Vercel`
