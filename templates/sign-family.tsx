@@ -34,8 +34,9 @@ const FONT_FACES = [
 type ArrowDir = "left" | "right" | "up" | "down" | "none";
 
 const ARROW_POINTS: Record<ArrowDir, string> = {
-  right: "4,50 50,12 50,36 96,36 96,64 50,64 50,88",
-  left: "96,50 50,12 50,36 4,36 4,64 50,64 50,88",
+  // The apex is the first point: x=96 points right, x=4 points left.
+  right: "96,50 50,12 50,36 4,36 4,64 50,64 50,88",
+  left: "4,50 50,12 50,36 96,36 96,64 50,64 50,88",
   up: "50,4 12,50 36,50 36,96 64,96 64,50 88,50",
   down: "50,96 12,50 36,50 36,4 64,4 64,50 88,50",
   none: "",
@@ -186,7 +187,10 @@ export function signFamily(brand: SignBrand, id: string) {
             style={{
               width: L.width - L.padding * 2,
               height: L.height - L.padding * 2,
-              justifyContent: "space-between",
+              // Centre the copy in the sign and set the foot just beneath it. Pinning the foot to
+              // the bottom edge with space-between left a dead void in the middle of the sign.
+              justifyContent: "center",
+              gap: L.gap,
             }}
           >
             {main}
