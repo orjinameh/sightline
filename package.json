@@ -1,0 +1,39 @@
+{
+  "name": "sightline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A wayfinding sign family where distance chooses the copy",
+  "license": "MIT",
+  "hyperElements": { "templates": ["templates/**"] },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "hyper-elements check templates/ designs/",
+    "assets": "tsx scripts/make-assets.ts",
+    "build:directory": "tsx scripts/build-directory.ts",
+    "render:designs": "tsx scripts/render-all.ts",
+    "strip": "tsx scripts/strip.tsx",
+    "contract": "tsx scripts/contract-image.tsx",
+    "demo": "npm run assets && npm run build:directory && npm run render:designs && npm run strip && npm run contract"
+  },
+  "dependencies": {
+    "@hyper-elements/react": "0.5.2",
+    "@react-pdf/renderer": "4.9.0",
+    "@resvg/resvg-js": "2.6.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "satori": "0.33.5"
+  },
+  "devDependencies": {
+    "@fontsource/barlow-condensed": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/ibm-plex-sans": "5.3.0",
+    "@hyper-elements/cli": "0.3.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.1.1"
+  }
+}
