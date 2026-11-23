@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "template": {
+    "module": "../../templates/sign-family.tsx",
+    "id": "sightline.SignFamily",
+    "version": "1.0.0"
+  },
+  "formats": [
+    "near",
+    "mid",
+    "far"
+  ],
+  "values": {
+    "destination": "Lifts",
+    "long": "Lifts to levels one to four, past reception on the right",
+    "medium": "Lifts, past reception",
+    "short": "Lifts",
+    "arrow": "right",
+    "pictogram": {
+      "src": "../../assets/pictograms/lift.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+}

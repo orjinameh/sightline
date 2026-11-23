@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "template": {
+    "module": "../../templates/sign-family-foundry.tsx",
+    "id": "sightline.SignFamilyFoundry",
+    "version": "1.0.0"
+  },
+  "formats": [
+    "near",
+    "mid",
+    "far"
+  ],
+  "values": {
+    "destination": "Toilets",
+    "long": "Toilets, changing places and showers, along the north wall of the workshop",
+    "medium": "Toilets, north wall",
+    "short": "Toilets",
+    "arrow": "left",
+    "pictogram": {
+      "src": "../../assets/pictograms/light/toilets.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+}

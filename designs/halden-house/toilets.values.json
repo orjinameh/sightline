@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "template": {
+    "module": "../../templates/sign-family.tsx",
+    "id": "sightline.SignFamily",
+    "version": "1.0.0"
+  },
+  "formats": [
+    "near",
+    "mid",
+    "far"
+  ],
+  "values": {
+    "destination": "Toilets",
+    "long": "Toilets and accessible toilet, through the double doors on your left",
+    "medium": "Toilets, on your left",
+    "short": "Toilets",
+    "arrow": "left",
+    "pictogram": {
+      "src": "../../assets/pictograms/toilets.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+}

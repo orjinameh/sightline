@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "template": {
+    "module": "../../templates/sign-family-foundry.tsx",
+    "id": "sightline.SignFamilyFoundry",
+    "version": "1.0.0"
+  },
+  "formats": [
+    "near",
+    "mid",
+    "far"
+  ],
+  "values": {
+    "destination": "Car park",
+    "long": "Staff and visitor parking, entered from Foundry Lane at the rear of the building",
+    "medium": "Parking, Foundry Lane",
+    "short": "Parking",
+    "arrow": "right",
+    "pictogram": {
+      "src": "../../assets/pictograms/light/car-park.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+}

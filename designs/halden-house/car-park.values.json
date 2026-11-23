@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "template": {
+    "module": "../../templates/sign-family.tsx",
+    "id": "sightline.SignFamily",
+    "version": "1.0.0"
+  },
+  "formats": [
+    "near",
+    "mid",
+    "far"
+  ],
+  "values": {
+    "destination": "Car park",
+    "long": "Visitor car park — follow the blue P signs past the north gate and the delivery bay",
+    "medium": "Visitor car park, north gate",
+    "short": "Visitor car park",
+    "arrow": "right",
+    "pictogram": {
+      "src": "../../assets/pictograms/car-park.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+}

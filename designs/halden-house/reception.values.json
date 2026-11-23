@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "template": {
+    "module": "../../templates/sign-family.tsx",
+    "id": "sightline.SignFamily",
+    "version": "1.0.0"
+  },
+  "formats": [
+    "near",
+    "mid",
+    "far"
+  ],
+  "values": {
+    "destination": "Reception",
+    "long": "Reception and visitor sign-in, at the top of the main stair",
+    "medium": "Reception, main stair",
+    "short": "Reception",
+    "arrow": "up",
+    "pictogram": {
+      "src": "../../assets/pictograms/reception.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+}
