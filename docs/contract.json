@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "id": "sightline.SignFamily",
+  "templateVersion": "1.0.0",
+  "label": "Wayfinding sign family — Halden House",
+  "root": "Canvas",
+  "guidance": "One destination per design. Give the long form for 3 m, the medium form for 12 m, and a three- or four-word short form for 30 m. Leave the short form out and the 30 m sign refuses by design — that is the point.",
+  "formats": {
+    "near": {
+      "width": 1772,
+      "height": 1181,
+      "scale": 1
+    },
+    "mid": {
+      "width": 3543,
+      "height": 1772,
+      "scale": 1
+    },
+    "far": {
+      "width": 5315,
+      "height": 1772,
+      "scale": 1
+    }
+  },
+  "fields": [
+    {
+      "path": "destination",
+      "kind": "text",
+      "label": "Destination",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "maxLength": 60,
+        "minLength": 1
+      }
+    },
+    {
+      "path": "long",
+      "kind": "text",
+      "label": "Long form (3 m)",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "maxLength": 120,
+        "minLength": 1
+      },
+      "fit": {
+        "near": {
+          "maxLines": 3,
+          "sizes": [
+            72,
+            64,
+            56
+          ]
+        }
+      }
+    },
+    {
+      "path": "medium",
+      "kind": "text",
+      "label": "Medium form (12 m)",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "maxLength": 60,
+        "minLength": 1
+      },
+      "fit": {
+        "mid": {
+          "maxLines": 1,
+          "sizes": [
+            104,
+            92,
+            80
+          ]
+        }
+      }
+    },
+    {
+      "path": "short",
+      "kind": "text",
+      "label": "Short form (30 m)",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "maxLength": 30
+      },
+      "guidance": "Three or four words. Left empty, the 30 m sign carries the long form and refuses with image/fit.",
+      "fit": {
+        "far": {
+          "maxLines": 1,
+          "sizes": [
+            400,
+            340,
+            280
+          ]
+        }
+      }
+    },
+    {
+      "path": "arrow",
+      "kind": "choice",
+      "label": "Arrow",
+      "required": false,
+      "default": "right",
+      "schema": {
+        "enum": [
+          "left",
+          "right",
+          "up",
+          "down",
+          "none"
+        ]
+      }
+    },
+    {
+      "path": "pictogram",
+      "kind": "image",
+      "label": "Pictogram",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "required": [
+          "src",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "src": {
+            "type": "string",
+            "minLength": 1
+          },
+          "width": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "fit": "contain",
+      "aspect": {
+        "min": 0.8,
+        "max": 1.2
+      },
+      "minWidth": 512,
+      "accepts": [
+        "svg",
+        "png"
+      ],
+      "transparent": "required",
+      "regions": {
+        "near": {
+          "box": [
+            260,
+            260
+          ],
+          "pixels": [
+            260,
+            260
+          ]
+        },
+        "mid": {
+          "box": [
+            340,
+            340
+          ],
+          "pixels": [
+            340,
+            340
+          ]
+        },
+        "far": {
+          "box": [
+            420,
+            420
+          ],
+          "pixels": [
+            420,
+            420
+          ]
+        }
+      }
+    }
+  ],
+  "rules": {
+    "lint": [],
+    "core": [
+      {
+        "code": "canvas/overflow",
+        "stage": "read"
+      },
+      {
+        "code": "image/overflow",
+        "stage": "measured"
+      },
+      {
+        "code": "image/glyph",
+        "stage": "measured"
+      },
+      {
+        "code": "image/fit",
+        "stage": "measured"
+      }
+    ]
+  },
+  "theme": {
+    "tokens": [
+      {
+        "path": "colors.background",
+        "group": "colors",
+        "value": "#f4f1ea"
+      },
+      {
+        "path": "colors.foreground",
+        "group": "colors",
+        "value": "#14201c"
+      },
+      {
+        "path": "colors.primary",
+        "group": "colors",
+        "value": "#1f4d3f"
+      },
+      {
+        "path": "colors.primaryForeground",
+        "group": "colors",
+        "value": "#f4f1ea"
+      },
+      {
+        "path": "colors.muted",
+        "group": "colors",
+        "value": "#6b6a5f"
+      },
+      {
+        "path": "colors.border",
+        "group": "colors",
+        "value": "#dad3c2"
+      },
+      {
+        "path": "fontSizes.body",
+        "group": "fontSizes",
+        "value": 32
+      },
+      {
+        "path": "lineHeights.body",
+        "group": "lineHeights",
+        "value": 1.15
+      },
+      {
+        "path": "fonts.body",
+        "group": "fonts",
+        "value": "IBM Plex Sans"
+      },
+      {
+        "path": "fonts.heading",
+        "group": "fonts",
+        "value": "IBM Plex Sans"
+      },
+      {
+        "path": "radii.md",
+        "group": "radii",
+        "value": 12
+      }
+    ],
+    "roles": [
+      "colors.background",
+      "colors.foreground",
+      "fonts.body",
+      "fontSizes.body",
+      "lineHeights.body",
+      "fonts.heading",
+      "colors.primary",
+      "colors.primaryForeground",
+      "colors.border"
+    ],
+    "styles": [],
+    "elements": [],
+    "components": []
+  },
+  "valuesSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "destination",
+      "long",
+      "medium",
+      "pictogram"
+    ],
+    "properties": {
+      "destination": {
+        "type": "string",
+        "maxLength": 60,
+        "minLength": 1
+      },
+      "long": {
+        "type": "string",
+        "maxLength": 120,
+        "minLength": 1
+      },
+      "medium": {
+        "type": "string",
+        "maxLength": 60,
+        "minLength": 1
+      },
+      "short": {
+        "type": "string",
+        "maxLength": 30
+      },
+      "arrow": {
+        "enum": [
+          "left",
+          "right",
+          "up",
+          "down",
+          "none"
+        ]
+      },
+      "pictogram": {
+        "type": "object",
+        "required": [
+          "src",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "src": {
+            "type": "string",
+            "minLength": 1
+          },
+          "width": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "fixed": "Everything not listed: the layout, typography, colors, the fixed text and images, and the arrangement per format."
+}
