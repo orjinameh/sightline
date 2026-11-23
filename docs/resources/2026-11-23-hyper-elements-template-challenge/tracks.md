@@ -56,12 +56,12 @@ sample brands, 2026-11-23) — so "which output type" is a *placement* decision,
 Published criteria are the only binding text. These are readings of them against what the field actually does;
 idea-forge should treat them as hypotheses to test, not facts:
 
-1. **`Use of Hyper Elements` is the criterion with the most headroom.** The deepest surfaces of the library —
-   `template()` with typed fields, `formats`, `field.slot`/`prop.blocks`, `rules` (`require.lint`, `require.core`,
-   `links.domains`), values files (`design new` / `design set`), `--require-template`, `describe`, and the
-   email-client emulator — are used by **0–4 of 89** submissions (measured: `template(` 2, `field.slot` 0,
-   `prop.blocks` 0, `require:` 0, `--require-template` 0, `formats` 0, values files 0, `@hyper-elements/email-clients` 0,
-   `@hyper-elements/lint` 0). See `prior-art.md` §White space.
+1. **`Use of Hyper Elements` is the criterion with the most headroom — but not everywhere.** Measured over the 89
+   live submissions (2026-11-23): the *table-stakes* surfaces are already saturated — PDF 69/89, theme 64, image 64,
+   `validate()` 41, **email-client previews 36**, CLI check 28, brand-parameterized 22, values files 17 (one
+   portfolio), typed custom elements 13. The **measured-zero** surfaces are the ones with headroom: `formats` (0),
+   `rules` with `require.lint`/`require.core` (0), `field.slot` (0), `prop.blocks` (0), `--require-template` (0),
+   `template extract` (0), `--max-warnings 0` (0), and `template()` itself at 2/89. See `prior-art.md` §3.
 2. **`Practical value` rewards the gallery's own shape.** The gallery's unit is
    `templates/<kind>/<slug>/template.tsx` + `designs/*.tsx` + a brand, i.e. *a brand-parameterized template with
    designs made from it*. A submission in that exact shape is (a) obviously reusable, (b) trivially acceptable into

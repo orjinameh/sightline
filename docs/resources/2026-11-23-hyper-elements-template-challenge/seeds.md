@@ -52,7 +52,8 @@ rules — the three mechanisms that make "agent-safe content" real).
 5. **Values files + provenance** — `design new --set image=@file.png --source image=source.json` records
    `{kind: "generated", provider, model, prompt}` beside an image hash. The library ships **AI-image provenance**.
 6. **19-client email emulator, deterministic, local** — 97–99% modelled accuracy, classic Outlook drawn with Word's
-   rules, dark modes, `--findings --screenshots`. A ready-made evidence artifact no entry has used.
+   rules, dark modes, `--findings --screenshots`. **Already table stakes in the field (36 of 89 mention the package)**
+   — use it as *evidence*, never as the headline.
 7. **`template extract`** — turn a human-approved design into a template by naming the parts that vary. A workflow
    story ("design once by hand, then freeze it into a template") that no entry tells.
 8. **`toDesign()`** — a design as Unlayer builder JSON, for a visual editor (`/docs/guides/visual-editor`). A bridge

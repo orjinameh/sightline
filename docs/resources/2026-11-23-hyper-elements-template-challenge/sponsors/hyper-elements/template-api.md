@@ -4,8 +4,9 @@ Fetched 2026-11-23. Sources: `/docs/templates`, `/docs/templates/fields`, `/docs
 `/docs/templates/rules`, `/docs/templates/cli`, plus the repo's `skills/brand-templates/SKILL.md` and
 `skills/brand-templates/example.tsx` (both vendored under `raw/`).
 
-**Why this file exists:** the event asks for a *template*, and 87 of 89 live submissions never touch this API
-(measured — see `prior-art.md` §White space). This is where `Use of Hyper Elements` is won or lost.
+**Why this file exists:** the event asks for a *template*, and only **2 of 89** live submissions import this module
+(`@hyper-elements/react/template`), with `field.slot`, `prop.blocks`, `rules`, `formats` and `--require-template` at
+**0 of 89** (measured — `prior-art.md` §3). This is where `Use of Hyper Elements` is won or lost.
 
 ## What a template is (verbatim)
 

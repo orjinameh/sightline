@@ -135,26 +135,50 @@ own repo, not the entrant's.
 
 ## 3. What the field actually does (measured, not impression)
 
-Counts over all 89 bodies (keyword presence in the discussion body, 2026-11-23):
+Counts over all 89 bodies: the **presence of a signal string** in the discussion body, 2026-11-23. This measures
+*claims*, not verified code — an entry can claim a feature it doesn't ship. Treat a `0` as reliable (nobody even
+mentions it) and a non-zero as "at least this many talk about it".
+
+### Table stakes (the field already does this — not a differentiator)
 
 | Signal | Entries | Reading |
 |---|---|---|
-| `defineTheme` | 64 | Theme-first is universal; a plain unthemed design looks dated next to the field |
-| `renderImage` | 64 | A Canvas/share card is table stakes |
-| `renderPdf` | 69 | A PDF is table stakes |
-| `hyper-elements check` (CLI) | 28 | A third ran the checker — the rest may not have |
-| `design new` (string) | 17 | Mostly prose ("a design new…"), not the CLI command |
-| `template(` | 2 (#303, #314) | The template API is nearly untouched |
-| `react/template` | 2 (#313, #314) | same |
-| `prop.text` / typed custom elements | 10 (dunoil + rohit-jsfreaky sets) | `defineElement()` + `prop.*` is the deepest thing most top entries do |
-| `field.slot` | **0** | Slots unused |
-| `prop.blocks` | **0** | Blocks unused |
-| `require:` (rules) | **0** as a rules block; 5 in prose | Template rules unused |
-| `formats` | **0** | Multi-size-from-one-template unused |
-| `.values.json` (values file) | **0** | Values-file workflow unused |
-| `--require-template` | **0** | Template enforcement unused |
-| `@hyper-elements/lint` in rules | **0** | Lint in templates unused |
-| `@hyper-elements/email-clients` | **0** | The email-client emulator unused by everyone |
+| `renderPdf` | 69 / 89 | A PDF output is near-universal |
+| `defineTheme` | 64 / 89 | Theme-first is universal; an unthemed design looks dated beside the field |
+| `renderImage` | 64 / 89 | A Canvas/share card is table stakes |
+| `validate()` | 41 / 89 | Validation is common |
+| `@hyper-elements/email-clients` | **36 / 89** | **40% of the field already ships client proof** (Outlook/Gmail/Apple Mail previews). Do not treat this as novel |
+| `hyper-elements check` (CLI) | 28 / 89 | A third ran the checker |
+| `brand(...)` / brand-parameterized | 22 / 89 | Brand-driven templates are more common than the titles suggest |
+| `design new` (CLI) + `hyper-elements render` | **17 / 89** | The values-file workflow **is** in use — but by essentially one portfolio (`rohit-jsfreaky`, #313–#331). It is a *house style*, not a field norm |
+| `defineElement()` | 13 / 89 | Typed custom elements (`prop.text`, `prop.choice`, …) — the deepest thing most top entries do |
+| `outline()` | 11 / 89 | Layout verification |
+| `extendTheme()` | 9 / 89 | Multi-brand from one base |
+
+### White space (measured zero — nobody mentions these)
+
+| Signal | Entries | Reading |
+|---|---|---|
+| `formats: { … }` (multi-size from one template) | **0** | The gallery's own signature move (square + landscape from one value set) is unused by the entire field. Prose "four formats" (19 entries) means four *output roots*, not the `formats` option |
+| `field.slot` | **0** | Slots — content someone else writes, inside limits — unused |
+| `prop.blocks` | **0** | Blocks — approved sections as data — unused |
+| `rules: { … }` as a template rules block | **0** | Template rules unused (the 5 "rules" hits are prose about validation) |
+| `require: { lint, core }` | **0** | Enforced rules (`passed/failed/not-run`) unused |
+| `--require-template` | **0** | Template enforcement in CI unused |
+| `template extract` | **0** | "Freeze an approved design into a template" unused |
+| `--max-warnings 0` | **0** | A hard CI gate on warnings unused |
+| `@hyper-elements/lint` as a package / `require.lint` | **0** (5 use `lint(` inline) | Lint *as a template rule* unused |
+
+### Near-zero (1–2 entries)
+
+| Signal | Entries | Reading |
+|---|---|---|
+| `template()` / `import … from "@hyper-elements/react/template"` | **2** (#313, #314; #303 claims "five `template()`s") | The template API is the newest and least-used surface in the field |
+| `field.image` (with its aspect/minWidth/accepts limits) | **1** (#313) | Image *limits* are effectively unused |
+
+> **Measurement caveat, stated once:** this is body-text presence, not code inspection. `rohit-jsfreaky`'s 17-entry
+> portfolio single-handedly supplies most of the values-file/CLI counts; strip that one author and the field's
+> template-API usage drops to ~3 entries. The `0` rows are the safe ones.
 
 ## 4. The dominant idiom, and why it's now a liability
 
@@ -174,17 +198,21 @@ now the **default**, so it scores ~0 on `Originality` no matter how well done. T
 - **Domain swapping.** Bali surf, Balinese water cooperative, satellite passes, repair café, vinyl drop, community
   theatre — same mechanism, different nouns. The judges will pattern-match this quickly.
 
-**What the field does NOT do** (each is an unexploited lever):
+**What the field does NOT do** (each is an unexploited lever, measured in §3):
 
 | Unexploited | Evidence |
 |---|---|
-| **`formats`** — one template, several sizes from one set of values | 0 of 89; only the official launch graphic does it |
-| **`template()` + values file + `--require-template`** — the "a developer can trust this" story | 2–4 of 89, none with a values file |
-| **`rules` that actually run** (`require.lint`, `require.core`, `links.domains`, `images.domains`) | 0 of 89 |
-| **Slots/blocks** — a template a *team* fills, not just a developer | 0 of 89 |
-| **Email-client evidence** — "here it is as Outlook/Gmail/Apple Mail draw it" | 0 of 89, despite the library shipping a 19-client emulator |
-| **Brand-parameterized template** (one template → N brands, `extendTheme`) | ~3 of 89; the official gallery is built *entirely* this way |
-| **A real `chek` gate in CI** (`--max-warnings 0`) | 0 of 89 |
+| **`formats`** — one template, several sizes from one set of values | **0 of 89**; only the official launch graphic does it |
+| **`rules` that actually run** (`require.lint`, `require.core`, `links.domains`, `images.domains`) with `passed/failed/not-run` | **0 of 89** |
+| **Slots/blocks** — a template a *team or an agent* fills, not just a developer | **0 of 89** |
+| **`--require-template` / `template extract` / `--max-warnings 0`** — the "this artifact is verifiably template-driven" story | **0 of 89** |
+| **`field.image` limits** (aspect, minWidth, accepts, maxCrop) | 1 of 89 |
+| **`template()` itself** | 2 of 89 (+1 claiming five templates) |
+| **Brand-parameterized template** (one template → N brands via `extendTheme`) | 9 use `extendTheme`, ~22 mention a brand — the official gallery is built *entirely* this way, so this is a **craft** gap, not a novelty gap |
+
+**What the field already owns — do not sell these as novelty:** email-client previews (36 of 89), the CLI checker
+(28), `validate()` (41), PDF+image+theme (64–69), typed custom elements (13). A README that leads with "I checked it in
+Outlook" is describing 40% of the field.
 
 ## 5. Exemplars worth reading before ideating (deep reads, 2026-11-23)
 
@@ -203,9 +231,11 @@ now the **default**, so it scores ~0 on `Originality` no matter how well done. T
 
 1. **Don't ship a fourth "one file → 4 outputs" kit** unless the mechanism is new. That lane is owned by three
    portofolios with 30+ entries and better distribution.
-2. **The cheapest originality in this field is mechanism, not domain.** `formats` + `template()` + running `rules` +
-   a values file + a `check --max-warnings 0` gate + client-emulator evidence is a **six-signal stack that no entry
-   has**. It maps directly onto `Use of Hyper Elements` and onto the FAQ's "reusable / build upon it".
+2. **The cheapest originality in this field is mechanism, not domain.** The unclaimed mechanism stack is
+   `formats` + `template()` with typed fields + **running** `rules` (`require.lint`/`require.core`, `links.domains`)
+   + slots/blocks + `--require-template` in CI. No entry has more than one of those. It maps directly onto
+   `Use of Hyper Elements` and onto the FAQ's "reusable / build upon it" — and unlike "client previews", nobody can
+   say "everyone does that".
 3. **`Design quality` is judged against the 30-template gallery**, which is editorial, restrained and brand-driven
    (Stripe/Apple/Nike/Spotify recreations set the ceiling). A loud "AI-generated" look loses to a quiet one.
 4. **A single, superb piece beats a kit.** FAQ #23 says complexity doesn't win; the field is drowning in complexity.

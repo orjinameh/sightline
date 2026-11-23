@@ -138,8 +138,9 @@ IDs: `outlook` (97%), `outlook-com`, `outlook-com.mac`, `outlook-mac`, `outlook-
 `gmail-app`, `gmail-app-other`, `gmail-app.iphone`, `apple-mail`, `apple-mail.dark`, `apple-mail.iphone`,
 `apple-mail.iphone.dark`, `yahoo`, `yahoo.mac`, `yahoo.dark`, `yahoo.mac.dark`, `aol`, `aol.mac`.
 Classic Outlook is drawn with **Word's** rules. Runs anywhere (no Windows/Office), in milliseconds, deterministic —
-`npx hyper-elements preview emails/ --findings --screenshots` produces per-client findings + PNGs. **This is a
-ready-made, credible artifact for the README and the demo video: "the same email, as 19 clients draw it."**
+`npx hyper-elements preview emails/ --findings --screenshots` produces per-client findings + PNGs. It is a
+ready-made, credible artifact for the README and the demo video ("the same email, as 19 clients draw it") — but note
+**36 of the 89 live submissions already cite this package**, so it is proof, not differentiation (`prior-art.md` §3).
 
 ### Feasibility notes for the architect (hard facts that constrain the plan)
 
