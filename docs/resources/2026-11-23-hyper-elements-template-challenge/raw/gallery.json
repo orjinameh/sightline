@@ -1,0 +1,174 @@
+{
+ "fetched": "2026-11-23",
+ "source": "https://www.hyperelements.dev/templates",
+ "templates": [
+  {
+   "route": "/templates/documents/airbnb-receipt",
+   "kind": "documents",
+   "slug": "airbnb-receipt"
+  },
+  {
+   "route": "/templates/documents/certificate",
+   "kind": "documents",
+   "slug": "certificate"
+  },
+  {
+   "route": "/templates/documents/invoice",
+   "kind": "documents",
+   "slug": "invoice"
+  },
+  {
+   "route": "/templates/documents/quote",
+   "kind": "documents",
+   "slug": "quote"
+  },
+  {
+   "route": "/templates/documents/receipt",
+   "kind": "documents",
+   "slug": "receipt"
+  },
+  {
+   "route": "/templates/documents/stripe-invoice",
+   "kind": "documents",
+   "slug": "stripe-invoice"
+  },
+  {
+   "route": "/templates/documents/ticket",
+   "kind": "documents",
+   "slug": "ticket"
+  },
+  {
+   "route": "/templates/emails/airbnb-review",
+   "kind": "emails",
+   "slug": "airbnb-review"
+  },
+  {
+   "route": "/templates/emails/apple-receipt",
+   "kind": "emails",
+   "slug": "apple-receipt"
+  },
+  {
+   "route": "/templates/emails/event",
+   "kind": "emails",
+   "slug": "event"
+  },
+  {
+   "route": "/templates/emails/invoice",
+   "kind": "emails",
+   "slug": "invoice"
+  },
+  {
+   "route": "/templates/emails/magic-link",
+   "kind": "emails",
+   "slug": "magic-link"
+  },
+  {
+   "route": "/templates/emails/newsletter",
+   "kind": "emails",
+   "slug": "newsletter"
+  },
+  {
+   "route": "/templates/emails/nike-shipping",
+   "kind": "emails",
+   "slug": "nike-shipping"
+  },
+  {
+   "route": "/templates/emails/order-confirmation",
+   "kind": "emails",
+   "slug": "order-confirmation"
+  },
+  {
+   "route": "/templates/emails/password-reset",
+   "kind": "emails",
+   "slug": "password-reset"
+  },
+  {
+   "route": "/templates/emails/receipt",
+   "kind": "emails",
+   "slug": "receipt"
+  },
+  {
+   "route": "/templates/emails/shipping",
+   "kind": "emails",
+   "slug": "shipping"
+  },
+  {
+   "route": "/templates/emails/sign-in-code",
+   "kind": "emails",
+   "slug": "sign-in-code"
+  },
+  {
+   "route": "/templates/emails/spotify-premium",
+   "kind": "emails",
+   "slug": "spotify-premium"
+  },
+  {
+   "route": "/templates/emails/stack-overflow-tips",
+   "kind": "emails",
+   "slug": "stack-overflow-tips"
+  },
+  {
+   "route": "/templates/emails/stripe-welcome",
+   "kind": "emails",
+   "slug": "stripe-welcome"
+  },
+  {
+   "route": "/templates/emails/verify-email",
+   "kind": "emails",
+   "slug": "verify-email"
+  },
+  {
+   "route": "/templates/emails/welcome",
+   "kind": "emails",
+   "slug": "welcome"
+  },
+  {
+   "route": "/templates/images/announcement",
+   "kind": "images",
+   "slug": "announcement"
+  },
+  {
+   "route": "/templates/images/nike-drop",
+   "kind": "images",
+   "slug": "nike-drop"
+  },
+  {
+   "route": "/templates/images/og-card",
+   "kind": "images",
+   "slug": "og-card"
+  },
+  {
+   "route": "/templates/images/speaker",
+   "kind": "images",
+   "slug": "speaker"
+  },
+  {
+   "route": "/templates/images/spotify-wrapped",
+   "kind": "images",
+   "slug": "spotify-wrapped"
+  },
+  {
+   "route": "/templates/pages/event",
+   "kind": "pages",
+   "slug": "event"
+  }
+ ],
+ "brands_in_gallery": [
+  "airbnb-original",
+  "apple-original",
+  "casa-albero",
+  "ember",
+  "keel",
+  "nike-original",
+  "orbit",
+  "oyen",
+  "pell-ashby",
+  "pith",
+  "quarry",
+  "slow-signals",
+  "spotify-original",
+  "stack-overflow-original",
+  "stripe-original"
+ ],
+ "count": 30
+}

@@ -1,0 +1,127 @@
+Hyper Elements Template Challenge FAQ
+Source: https://unlayer.notion.site/Hyper-Elements-Template-Challenge-FAQ-4170ceb4c8e180ddb512d69e3792585d
+Fetched: 2026-11-23 via Playwright (Notion SPA; virtualized scroll, text reassembled from successive viewports).
+NOTE: text is complete but ordering within a viewport-window can repeat a heading; each of Q1-Q30 appears once.
+---
+
+Hyper Elements Template Challenge FAQ
+About the Challenge
+1. What is the Hyper Elements Template Challenge?
+The Hyper Elements Template Challenge is a two-week building competition where developers are invited to create original templates using Hyper Elements.
+There are no predefined themes or categories. You can build any kind of template you want, as long as you use Hyper Elements in your implementation.
+Five winning submissions will each receive $100, and their templates will be featured in the official Hyper Elements template gallery.
+2. What is Hyper Elements?
+Hyper Elements is an open-source React library that helps developers and AI agents build polished emails, web pages, PDFs and images using reusable components.
+You can learn more through the following resources:
+Hyper Elements website
+Documentation
+GitHub repository
+Template gallery
+3. What can I build for the challenge?
+Anything you want!
+You can create email templates, landing pages, invoices, reports, social media graphics, newsletters, invitations or something completely different.
+There are no restrictions on the type, subject or design of your template. To qualify, you must use Hyper Elements in your implementation and star the official GitHub repository.
+If you need inspiration, check out the existing template gallery.
+4. Do I need to follow a particular theme or category?
+No. This is an open-ended challenge, so you're free to choose your own concept and creative direction.
+All eligible submissions will compete together, regardless of the type of template created.
+5. Do I need to build a complete application?
+No. The challenge focuses on creating a template using Hyper Elements.
+You're welcome to build a more complete application around your template, but that isn't required.
+6. Do I need to support all four output formats?
+No. Hyper Elements supports emails, web pages, PDFs and images, but you're not required to create all four.
+You can focus on a single output format or explore multiple formats if they make sense for your project.
+7. Does Hyper Elements need to be the main technology used?
+Hyper Elements must be meaningfully used to build and render your submitted template.
+Simply installing the library without using it in the actual implementation would not satisfy the challenge's core requirement.
+8. Can I use other libraries, frameworks and tools?
+Yes. You can use other technologies alongside Hyper Elements to support your project.
+The important thing is that Hyper Elements plays a meaningful role in creating the submitted template.
+9. Can I use AI tools to help build my template?
+Yes! You're welcome to use AI coding tools and agents to help create your submission.
+Hyper Elements also provides resources designed to help AI agents work with its components.
+You can explore the Hyper Elements skill or refer to the documentation.
+10. Can I use an existing project as a starting point?
+Yes! You're welcome to build on an existing project, as long as Hyper Elements is clearly incorporated into the project's implementation.
+Participation and Submissions
+11. How do I participate?
+To participate in the challenge:
+Star the Hyper Elements GitHub repository.
+Build a template using Hyper Elements.
+Publish your source code in a public GitHub repository with a clear README.
+Submit your project through the official challenge submission form on GitHub Discussions.
+To submit your entry, complete the required fields and create a new discussion under Challenge Submissions.
+Each submission will have its own discussion, where community members can explore your project, leave feedback and ask questions.
+You'll also need to confirm that you've starred the Hyper Elements repository, that your public repository includes the required source code and README, and that your submission meets the challenge requirements.
+12. What do I need to submit?
+When completing the official submission form, you'll need to provide:
+Challenge: Select the Hyper Elements Template Challenge from the dropdown.
+Project name: The name of your template.
+Project description: A brief explanation of what you've built.
+GitHub repository: A link to the public repository containing your template's source code.
+Hyper Elements implementation: A brief explanation of how you've used Hyper Elements in your project.
+Live preview (optional): A link to your template if it's publicly accessible.
+Your repository must also include a README with:
+Preview: A screenshot, GIF or video showcasing the completed template.
+Hyper Elements implementation: An explanation of how Hyper Elements was used.
+Setup instructions: Clear instructions on how to run or reproduce your template.
+13. Do I need to make my GitHub repository public?
+Yes. Your repository must be public so the team can review your code and verify that Hyper Elements has been used in your implementation.
+14. Do I need to deploy my template?
+No. A live deployment is not required to participate.
+However, your submission's GitHub repository must include a README with a screenshot, GIF or video showcasing the completed template, an explanation of how Hyper Elements was used, and clear instructions on how to run or reproduce it.
+If your template is publicly accessible, you're welcome to include a live preview link in your README.
+15. Can I submit more than one template?
+Yes! There's no limit to the number of templates you can submit.
+Each template must be submitted separately through GitHub Discussions and meet the challenge requirements.
+16. Can I participate as part of a team?
+Yes! Team submissions are welcome.
+Prizes will be awarded per winning submission, and team members will be responsible for deciding how to distribute the prize among themselves.
+17. Can I participate from anywhere in the world?
+Yes! There are no geographic restrictions for this challenge.
+18. Do I need to post about my submission on social media?
+No. Posting on social media is not required, but you're encouraged to share your submission using #HyperElementsTemplate so others can discover what you've built!
+19. Where can I ask questions or get help?
+You can ask questions in the Q&A category of Hyper Elements GitHub Discussions.
+You can also explore other participants' entries in Challenge Submissions, share feedback and connect with fellow builders.
+The Show and tell category remains available for sharing projects and demos outside the challenge.
+For technical guidance, refer to the official Hyper Elements documentation.
+Judging and Prizes
+20. What are the prizes?
+There is a total prize pool of $500, distributed equally among five winning submissions.
+Each winning submission will receive $100.
+21. Are there different prize categories?
+No. There are no separate categories.
+All eligible templates will be considered together, and five winning submissions will be selected.
+22. How will submissions be judged?
+All eligible submissions will be reviewed by Unlayer's core team based on the following criteria:
+Originality: How creative and original is the template's concept?
+Design quality: Is the template visually polished, well-structured and thoughtfully designed?
+Practical value: How useful is the template, and could other developers realistically reuse or build upon it?
+Use of Hyper Elements: How effectively is Hyper Elements integrated into the template's implementation?
+Overall execution: Is the template functional, well-presented, properly documented and easy to understand or reproduce?
+Submissions will be evaluated holistically, with no preference given to any particular template type or output format.
+23. Do more complex templates have a better chance of winning?
+Not necessarily! Technical complexity alone will not determine the winners.
+A simple, well-designed template with a strong concept, practical value and thoughtful use of Hyper Elements can be just as competitive as a more complex project.
+24. Who will select the winners?
+Unlayer's core team will evaluate all valid submissions and select the challenge winners.
+25. When and where will the winners be announced?
+Submissions will be evaluated by Unlayer's core team after the challenge deadline of November 29, 2026, at 23:59 UTC.
+Winners will be announced on Unlayer's official social media channels and in the Announcements category of Hyper Elements GitHub Discussions.
+26. Will my template be added to the official Hyper Elements template gallery?
+The five winning templates will be included in the official Hyper Elements template gallery.
+Additionally, the winning templates will be featured in a dedicated post across Unlayer's official social media channels.
+Dates and General Information
+27. When does the challenge start and end?
+The challenge will run for two weeks.
+Start date: November 16, 2026
+Submission deadline: November 29, 2026, at 23:59 UTC
+28. Can I update my submission after entering?
+Yes! You're welcome to update your submission as many times as you like, even after submitting it, provided all changes are made before November 29, 2026, at 23:59 UTC.
+29. Can I participate if I'm new to Hyper Elements?
+Absolutely! You don't need to have used Hyper Elements before.
+You can get started with the official documentation, explore the template gallery, or browse the GitHub repository.
+30. Where can I find challenge updates?
+Challenge announcements, updates and community discussions will be hosted on Hyper Elements GitHub Discussions.
+To submit your template, use the official challenge submission form under Challenge Submissions.
