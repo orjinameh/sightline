@@ -652,15 +652,13 @@
       "files": {
         "create": [
           "docs/index.html",
-          "vercel.json",
           "tests/pages.test.ts"
         ],
         "modify": [],
         "test": []
       },
       "provides": [
-        "docs/index.html",
-        "vercel.json"
+        "docs/index.html"
       ],
       "requires": [
         "docs/images/strip.png",

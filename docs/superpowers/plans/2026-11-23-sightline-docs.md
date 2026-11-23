@@ -286,13 +286,12 @@
 
 **Files:**
 - Create: `docs/index.html`
-- Create: `vercel.json`
 - Create: `tests/pages.test.ts`
 
 **Depends on:** Task 13, Task 14
 **Effort:** low
 **Model tier:** standard
-**Provides:** `docs/index.html`, `vercel.json`
+**Provides:** `docs/index.html`
 **Requires:** `docs/images/strip.png`, `docs/contract.json`, `docs/images/contract.png`
 
 - [ ] **Step 1: Write the failing test `tests/pages.test.ts`**
@@ -318,11 +317,13 @@
           }
         });
 
-        it("can be deployed to Vercel as a static site", async () => {
-          const cfg = JSON.parse(await readFile("vercel.json", "utf8")) as {
-            outputDirectory?: string;
-          };
-          expect(cfg.outputDirectory).toBe("docs");
+        it("declares what the serverless renderer needs on Vercel", async () => {
+          // The native engine and the font/text library must stay outside the bundle, and the assets
+          // the route reads at request time must be traced into the function. Deploy-breaking if lost.
+          const cfg = await readFile("next.config.ts", "utf8");
+          expect(cfg).toContain("serverExternalPackages");
+          expect(cfg).toContain("@resvg/resvg-js");
+          expect(cfg).toContain("outputFileTracingIncludes");
         });
       });
       ```
@@ -447,17 +448,11 @@
       </html>
       ```
 
-- [ ] **Step 4: Write `vercel.json`**
+- [ ] **Step 4: No `vercel.json`**
 
-      One config so the same folder deploys to Vercel as a static site, with no build step:
-
-      ```json
-      {
-        "$schema": "https://openapi.vercel.sh/vercel.json",
-        "outputDirectory": "docs",
-        "cleanUrls": true
-      }
-      ```
+      Task 18 turns the repo root into a Next.js app, so a `vercel.json` with `outputDirectory: "docs"`
+      would make Vercel serve the static folder instead of the app. Do not create one. This page stays
+      deployable on its own to GitHub Pages (Settings → Pages → `main` / `docs`).
 
 - [ ] **Step 5: Run the gate**
 

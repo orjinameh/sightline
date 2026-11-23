@@ -18,10 +18,12 @@ describe("the preview page", () => {
     }
   });
 
-  it("can be deployed to Vercel as a static site", async () => {
-    const cfg = JSON.parse(await readFile("vercel.json", "utf8")) as {
-      outputDirectory?: string;
-    };
-    expect(cfg.outputDirectory).toBe("docs");
+  it("declares what the serverless renderer needs on Vercel", async () => {
+    // The native engine and the font/text library must stay outside the bundle, and the assets the
+    // route reads at request time must be traced into the function. Both are deploy-breaking if lost.
+    const cfg = await readFile("next.config.ts", "utf8");
+    expect(cfg).toContain("serverExternalPackages");
+    expect(cfg).toContain("@resvg/resvg-js");
+    expect(cfg).toContain("outputFileTracingIncludes");
   });
 });
