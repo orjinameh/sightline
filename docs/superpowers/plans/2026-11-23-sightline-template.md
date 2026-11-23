@@ -47,7 +47,7 @@
         "type": "module",
         "description": "A wayfinding sign family where distance chooses the copy",
         "license": "MIT",
-        "hyperElements": { "templates": ["templates/**"] },
+        "hyperElements": { "templates": ["templates/**", "src/**", "brand.ts"] },
         "scripts": {
           "test": "vitest run",
           "typecheck": "tsc --noEmit",
