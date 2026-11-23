@@ -4,7 +4,7 @@
     "module": "../../templates/sign-family.tsx",
     "id": "sightline.SignFamily",
     "version": "1.0.0",
-    "sha256": "f1e4d64f08e85fb18e7cc60083df213fb050107e10c6cc3a30351e817bc5ca01"
+    "sha256": "0fb2134db48894265981c7d2239bf57e3784234fc12d21cedc4930f448da17de"
   },
   "formats": [
     "near",
