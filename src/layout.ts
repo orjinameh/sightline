@@ -54,7 +54,9 @@ export const LAYOUT: Record<FormatName, FormatLayout> = {
     padding: 120,
     arrangement: "row",
     copyColumnWidth: 3200,
-    fitSizes: [160, 140, 120],
+    // 340 px is where a four-word short form fills the 3200 px column; the long form needs roughly
+    // 12,600 px at the smallest size, so the refusal stays decisive.
+    fitSizes: [400, 340, 280],
     maxLines: 1,
     pictogramBox: 420,
     arrowBox: 200,
