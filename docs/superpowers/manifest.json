@@ -4,7 +4,8 @@
   "subsystems": [
     "template",
     "family",
-    "docs"
+    "docs",
+    "live"
   ],
   "tasks": [
     {
@@ -671,6 +672,49 @@
         "expect": "GATE-PASS"
       },
       "commit": "feat: a static preview page that deploys to Pages or Vercel",
+      "human_gate": false,
+      "allow_empty": false,
+      "status": "pending"
+    },
+    {
+      "id": "live:18",
+      "subsystem": "live",
+      "title": "The live renderer",
+      "plan": "docs/superpowers/plans/2026-11-23-sightline-live.md",
+      "depends_on": [
+        "template:6",
+        "template:2"
+      ],
+      "effort": "high",
+      "model_tier": "top",
+      "files": {
+        "create": [
+          "next.config.ts",
+          "app/layout.tsx",
+          "app/page.tsx",
+          "app/api/render/route.ts",
+          "scripts/probe-live.mjs"
+        ],
+        "modify": [
+          "package.json"
+        ],
+        "test": []
+      },
+      "provides": [
+        "POST /api/render",
+        "next.config.ts"
+      ],
+      "requires": [
+        "signFamily",
+        "sightline.SignFamily",
+        "assets/fonts/*.woff",
+        "assets/pictograms/*.png"
+      ],
+      "gate": {
+        "run": "npm install && npm run build && node scripts/probe-live.mjs && echo GATE-PASS",
+        "expect": "GATE-PASS"
+      },
+      "commit": "feat: a live renderer that runs the real template on the server",
       "human_gate": false,
       "allow_empty": false,
       "status": "pending"
