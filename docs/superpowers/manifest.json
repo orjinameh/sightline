@@ -371,7 +371,9 @@
       "subsystem": "family",
       "title": "The destination directory",
       "plan": "docs/superpowers/plans/2026-11-23-sightline-family.md",
-      "depends_on": [],
+      "depends_on": [
+        "template:1"
+      ],
       "effort": "low",
       "model_tier": "standard",
       "files": {

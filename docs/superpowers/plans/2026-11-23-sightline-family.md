@@ -17,7 +17,7 @@
 - Create: `directory/foundry-nine.ts`
 - Create: `tests/directory.test.ts`
 
-**Depends on:** —
+**Depends on:** Task 1
 **Effort:** low
 **Model tier:** standard
 **Provides:** `PictogramName`, `Arrow`, `Destination`, `Building`, `haldenHouseBuilding`, `foundryNineBuilding`
