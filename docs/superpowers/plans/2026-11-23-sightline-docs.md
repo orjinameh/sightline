@@ -126,6 +126,8 @@
 
       ![The same destination at 3 m, 12 m and 30 m, at one scale](docs/images/strip.png)
 
+      Live: **https://sightline-six-gamma.vercel.app** — the same page, deployed as a static site.
+
       TBD-post-build:demo media — a short GIF of the 30 m refusal followed by the strip
 
       ## What it does

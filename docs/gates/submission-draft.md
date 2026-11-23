@@ -69,9 +69,11 @@ service, no network at render time (fonts and pictograms are committed bytes).
 
 ## Live preview (optional)
 
-TBD-post-build:preview URL — `docs/index.html` is a static page that deploys either to GitHub Pages
-(`https://orjinameh.github.io/sightline/` — Settings → Pages → Source: `main` / `docs`) or to Vercel
-(`npx vercel --prod`, config already in `vercel.json`). Paste whichever is enabled at the closing gate.
+https://sightline-six-gamma.vercel.app
+
+A static page (`docs/index.html`) deployed to Vercel from the repo root; `vercel.json` sets
+`outputDirectory: "docs"`, so there is no build step. Verified public: the bare URL returns `200` with
+no cookies, and every image it references returns `200`.
 
 ---
 
