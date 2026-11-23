@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "template": {
+    "module": "../../templates/sign-sheet.tsx",
+    "id": "sightline.SignSheet",
+    "version": "1.0.0",
+    "sha256": "5af8fcc3e022cb8a95002548e26d8e55d4073502a18093e09eaaaee2daea020d"
+  },
+  "formats": [
+    "a3"
+  ],
+  "values": {
+    "building": "Halden House",
+    "rows": [
+      {
+        "destination": "Car park",
+        "long": "Visitor car park — follow the blue P signs past the north gate and the delivery bay",
+        "medium": "Visitor car park, north gate",
+        "short": "Visitor car park"
+      },
+      {
+        "destination": "Toilets",
+        "long": "Toilets and accessible toilet, through the double doors on your left",
+        "medium": "Toilets, on your left",
+        "short": "Toilets"
+      }
+    ]
+  }
+}
