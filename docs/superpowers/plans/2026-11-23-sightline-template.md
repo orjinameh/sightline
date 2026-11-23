@@ -72,6 +72,7 @@
           "@fontsource/ibm-plex-mono": "5.3.0",
           "@fontsource/ibm-plex-sans": "5.3.0",
           "@hyper-elements/cli": "0.3.3",
+          "@types/node": "24.19.2",
           "@types/react": "19.3.0",
           "@types/react-dom": "19.3.0",
           "tsx": "4.23.15",
